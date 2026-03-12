@@ -1,62 +1,69 @@
 import Component from "@glimmer/component";
-import { Input, Textarea } from "@ember/component";
 import { on } from "@ember/modifier";
 import { readOnly } from "@ember/object/computed";
 import { service } from "@ember/service";
-import { eq } from "truth-helpers";
-import i18n from "discourse-common/helpers/i18n";
+import { eq } from "discourse/truth-helpers";
+import { i18n } from "discourse-i18n";
 
 export default class TopicCustomFieldInput extends Component {
   @service siteSettings;
+
   @readOnly("siteSettings.topic_custom_field_name") fieldName;
   @readOnly("siteSettings.topic_custom_field_type") fieldType;
 
+  handleCheckboxChange = (event) => {
+    this.args.onChangeField(event.target.checked);
+  };
+
+  handleInputChange = (event) => {
+    this.args.onChangeField(event.target.value);
+  };
+
   <template>
     {{#if (eq this.fieldType "boolean")}}
-      <Input
-        @type="checkbox"
-        @checked={{@fieldValue}}
-        {{on "change" (action @onChangeField value="target.checked")}}
+      <input
+        type="checkbox"
+        checked={{@fieldValue}}
+        {{on "change" this.handleCheckboxChange}}
       />
       <span>{{this.fieldName}}</span>
     {{/if}}
 
     {{#if (eq this.fieldType "integer")}}
-      <Input
-        @type="number"
-        @value={{@fieldValue}}
+      <input
+        type="number"
+        value={{@fieldValue}}
         placeholder={{i18n
           "topic_custom_field.placeholder"
           field=this.fieldName
         }}
         class="topic-custom-field-input small"
-        {{on "change" (action @onChangeField value="target.value")}}
+        {{on "change" this.handleInputChange}}
       />
     {{/if}}
 
     {{#if (eq this.fieldType "string")}}
-      <Input
-        @type="text"
-        @value={{@fieldValue}}
+      <input
+        type="text"
+        value={{@fieldValue}}
         placeholder={{i18n
           "topic_custom_field.placeholder"
           field=this.fieldName
         }}
         class="topic-custom-field-input large"
-        {{on "change" (action @onChangeField value="target.value")}}
+        {{on "change" this.handleInputChange}}
       />
     {{/if}}
 
     {{#if (eq this.fieldType "json")}}
-      <Textarea
-        @value={{@fieldValue}}
-        {{on "change" (action @onChangeField value="target.value")}}
+      <textarea
         placeholder={{i18n
           "topic_custom_field.placeholder"
           field=this.fieldName
         }}
         class="topic-custom-field-textarea"
-      />
+        {{on "change" this.handleInputChange}}
+      >{{@fieldValue}}</textarea>
     {{/if}}
   </template>
 }
