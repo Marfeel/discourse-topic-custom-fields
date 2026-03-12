@@ -2,4 +2,16 @@ en:
   js:
     topic_custom_field:
       label: "%{field}: %{value}"
-      placeholder: "Enter a %{field}"
+      placeholder: "Enter %{field}"
+      add_field: "Add custom field"
+      remove_field: "Remove"
+      field_name: "Field name"
+      field_type: "Field type"
+      types:
+        string: "Text"
+        integer: "Number"
+        boolean: "Checkbox"
+        date: "Date"
+      section_title: "Topic Custom Fields"
+      max_fields_reached: "Maximum of 10 fields per category."
+      invalid_field_name: "Only letters, numbers, and underscores allowed."

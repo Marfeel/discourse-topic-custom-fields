@@ -1,5 +1,9 @@
 en:
   site_settings:
-    topic_custom_field_enabled: Enable your topic custom field.
-    topic_custom_field_name: Name of your topic custom field.
-    topic_custom_field_type: Type of your topic custom field.
+    topic_custom_field_enabled: "Enable topic custom fields per category."
+  topic_custom_field:
+    errors:
+      invalid_field_name: "Field name '%{name}' is invalid. Only letters, numbers, and underscores are allowed."
+      invalid_field_type: "Field type '%{type}' is invalid. Must be one of: string, integer, boolean, date."
+      max_fields: "Maximum of 10 custom fields per category."
+      type_conflict: "Field '%{name}' conflicts with type '%{type}' in another category."

@@ -1,16 +1,96 @@
-.topic-custom-field-input {
-  max-width: 100%;
+.topic-custom-field-composer-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  padding: 0.5em;
+  margin-bottom: 0.25em;
+  background: var(--primary-very-low);
+  border-radius: 4px;
+}
 
-  &.small {
-    width: 150px;
+.topic-custom-field-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.25em 0.5em;
+  background: var(--primary-low);
+  border-radius: 4px;
+
+  .topic-custom-field-label {
+    font-size: var(--font-down-1);
+    font-weight: 700;
+    color: var(--primary);
   }
 
-  &.large {
-    width: 475px;
+  .topic-custom-field-input {
+    margin: 0;
+
+    &.small {
+      width: 100px;
+    }
+
+    &.large {
+      width: 180px;
+    }
+  }
+
+  .topic-custom-field-date {
+    min-width: 140px;
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
   }
 }
 
-.topic-custom-field-textarea {
-  max-width: 100%;
-  width: 465px;
+.topic-custom-field-display {
+  display: inline-block;
+  margin-right: 0.35em;
+  margin-top: 0.25em;
+  padding: 0.15em 0.5em;
+  font-size: var(--font-down-1);
+  color: var(--primary);
+  background: var(--primary-low);
+  border-radius: 4px;
+}
+
+.topic-custom-fields-editor {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  padding-top: 0.5em;
+  border-top: 1px solid var(--primary-low);
+
+  h3 {
+    margin-bottom: 0.75em;
+  }
+
+  &__row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+
+    input,
+    select,
+    button {
+      margin: 0;
+    }
+  }
+
+  &__name {
+    width: 250px;
+  }
+
+  &__type {
+    width: 120px;
+  }
+
+  &__add {
+    margin-top: 0.5em;
+  }
+
+  &__limit {
+    color: var(--primary-medium);
+    font-style: italic;
+  }
 }
