@@ -1,4 +1,4 @@
 plugins:
   topic_custom_field_enabled:
-    default: true
+    default: false
     client: true
