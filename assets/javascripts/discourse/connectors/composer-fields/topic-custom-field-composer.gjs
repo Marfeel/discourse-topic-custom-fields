@@ -77,6 +77,7 @@ export default class TopicCustomFieldComposer extends Component {
     this.ensureFieldsSerialized(config);
 
     const topic = this.composerModel?.topic;
+    const topicData = topic?.topic_custom_fields_data || {};
     const values = { ...this.fieldValues };
     let changed = false;
 
@@ -85,7 +86,8 @@ export default class TopicCustomFieldComposer extends Component {
         return;
       }
       const key = `${FIELD_PREFIX}${field.name}`;
-      const existing = this.composerModel?.get(key) ?? topic?.get(key);
+      const existing =
+        this.composerModel?.get(key) ?? topic?.get(key) ?? topicData[field.name];
       if (existing != null) {
         values[field.name] = existing;
         this.composerModel?.set(key, existing);
