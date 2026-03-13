@@ -1,8 +1,9 @@
 import Component from "@glimmer/component";
 import { on } from "@ember/modifier";
 import DateInput from "discourse/components/date-input";
-import { eq } from "discourse/truth-helpers";
 import { i18n } from "discourse-i18n";
+
+const eq = (a, b) => a === b;
 
 export default class TopicCustomFieldInput extends Component {
   handleCheckboxChange = (event) => {
